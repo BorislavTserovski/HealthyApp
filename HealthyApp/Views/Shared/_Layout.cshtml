@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js"></script>
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js"></script>
+    <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js"></script>
     <title>@ViewData["Title"] - HealthyApp</title>
 
     <environment include="Development">
@@ -17,7 +20,7 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" style="opacity:1">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,12 +41,20 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - HealthyApp</p>
-        </footer>
+    
+    
+        <div class="container body-content">
+            
+            <div id="wrapper" class="toggled">
+                <div id="large-header" class="large-header">
+                    <canvas id="demo-canvas"  ></canvas>
+
+                    <div class="main-title">@RenderBody()</div>
+
+                </div>
+
+            </div>
+       
     </div>
 
     <environment include="Development">
