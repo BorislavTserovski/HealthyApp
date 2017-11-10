@@ -12,6 +12,7 @@ using HealthyApp.Data;
 using HealthyApp.Models;
 using HealthyApp.Services;
 using HealthyApp.Services.Calculator;
+using HealthyApp.Services.Diets;
 
 namespace HealthyApp
 {
@@ -24,24 +25,33 @@ namespace HealthyApp
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+       
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<HealthyAppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options=>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 1;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireUppercase = false;
+            })
+                .AddEntityFrameworkStores<HealthyAppDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Add application services.
+           
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ICalculatorService, CalculatorService>();
+            services.AddTransient<IDietService, DietService>();
 
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+       
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

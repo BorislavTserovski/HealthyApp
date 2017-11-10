@@ -160,6 +160,18 @@ body {
     color: #00bbbb;
 }
 
+.tableText {
+    font-family: 'Comic Sans MS';
+    color: #00bbbb;
+}
+
+.imageResize {
+    max-width: 250px;
+    max-height: 300px;
+}
+
+
+
 
 
 

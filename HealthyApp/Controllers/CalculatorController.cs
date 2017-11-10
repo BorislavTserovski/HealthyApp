@@ -52,6 +52,16 @@ namespace HealthyApp.Controllers
             return View(viewModel);
         }
 
-       
+        public IActionResult Chart()
+        {
+            return View();
+        }
+
+        public IActionResult Recomendation()
+        {
+            return View();
+        }
+
+
     }
 }

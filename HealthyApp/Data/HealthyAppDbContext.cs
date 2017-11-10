@@ -5,22 +5,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using HealthyApp.Models;
+using HealthyApp.Data.Models;
 
 namespace HealthyApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class HealthyAppDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public DbSet<Diet> Diets { get; set; }
+        
+
+        public HealthyAppDbContext(DbContextOptions<HealthyAppDbContext> options)
             : base(options)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Diet>()
+                .HasOne(d => d.Author)
+                .WithMany(a => a.Diets)
+                .HasForeignKey(d => d.AuthorId);
+
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            
         }
     }
 }

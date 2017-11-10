@@ -11,9 +11,10 @@ using System;
 namespace HealthyApp.Data.Migrations
 {
     [DbContext(typeof(HealthyAppDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171110191656_Diets")]
+    partial class Diets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
