@@ -128,4 +128,38 @@ body {
     font-family:'Comic Sans MS';
     
 }
+.menu {
+    font-family: 'Lato', sans-serif;
+    background: #333333;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+#menu a {
+    display: none;
+    text-decoration: none;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.menu-item {
+    display: none;
+    text-decoration: none;
+    padding: 5px 20px;
+    color: #fff;
+    font-size: 16px;
+    max-width: 160px;
+    position: relative;
+    text-transform: uppercase;
+    transition: ease-in .3s;
+    
+}
+
+.menu a:hover {
+    color: #00bbbb;
+}
+
+
+
 

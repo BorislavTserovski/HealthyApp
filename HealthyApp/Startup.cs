@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using HealthyApp.Data;
 using HealthyApp.Models;
 using HealthyApp.Services;
+using HealthyApp.Services.Calculator;
 
 namespace HealthyApp
 {
@@ -35,6 +36,7 @@ namespace HealthyApp
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<ICalculatorService, CalculatorService>();
 
             services.AddMvc();
         }
